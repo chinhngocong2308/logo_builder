@@ -8,9 +8,9 @@ app.get('/getRecommendedFont', (req, res) => {
   const query = req.query;
   const response = {};
   const fonts = fontSelector.getRecommendedFont(JSON.parse(query.payload), query.amountNear);
-
   for (var i = 0; i < fonts.length; i++) {
-    fonts[i].svg = fontGenerator.generateFont('Ca ní fà', fonts[i].name);
+    console.log("payload", JSON.parse(query.payload).text);
+    fonts[i].svg = fontGenerator.generateFont(JSON.parse(query.payload).text, fonts[i].name);
   }
   response.fonts = fonts;
   res.status(200).json(response);

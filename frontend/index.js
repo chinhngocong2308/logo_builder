@@ -88,17 +88,20 @@ getNewRecommendedFont = () => {
     "weight": 0,
     "personality": 0.5,
     "definition": 0.7,
-    "concept": 0.6
+    "concept": 0.6,
+    "text": "9hours"
   };
-console.log("payload", payload);
   const amount = document.getElementById('amount').value;;
   payload.type = document.getElementById('font-type').value;
+  payload.text = document.getElementById('name_company').value;
+
   for (var i = 0; i < Object.keys(payload).length; i++) {
     var key = Object.keys(payload)[i];
-    if (key !== 'type') {
+    if (key !== 'type' && key !== 'text') {
       payload[key] = document.getElementById(key).value;
     }
   }
+  console.log("sadsad", payload);
   getNewRecommendedFontRequest(payload, amount);
 };
 showIcon = (icon) => {
